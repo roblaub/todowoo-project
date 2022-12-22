@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*&%ohui0v#3+^y3j2n&h_v0c%bi*u39@59y_2v4k%=rm6agx#4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['todo.kodaconsult.com']
+ALLOWED_HOSTS = ['robertlaubscher.com']
 
 
 # Application definition
@@ -115,6 +115,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+#STATIC_ROOT = BASE_DIR /'static'
+
+STATIC_ROOT = "/home/kodahost/robertlaubscher.com/static/"
 
 STATIC_URL = 'static/'
 
