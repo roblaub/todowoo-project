@@ -73,15 +73,29 @@ WSGI_APPLICATION = 'todowoo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'kodahost_todowoo',
+#         'USER': 'kodahost_django',
+#         'PASSWORD': 'mRNSY5',
+#         'HOST': '198.38.82.92',
+#         #'PORT': '3306',
+#     }
+# }
+#
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'NAME': 'kodahost_todowoo',
         'USER': 'kodahost_django',
         'PASSWORD': 'mRNSY5',
         'HOST': '198.38.82.92',
-        #'PORT': '3306',
+        'PORT': '3306',
+        'OPTIONS': {
+          'autocommit': True,
+        },
     }
 }
 
