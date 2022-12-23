@@ -95,6 +95,7 @@ DATABASES = {
         'PORT': '3306',
         'OPTIONS': {
           'autocommit': True,
+          'init_command': 'ALTER DATABASE kodahost_todowoo CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci',
         },
     }
 }
