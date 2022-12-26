@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'todowoo.wsgi.application'
 #         'USER': 'kodahost_django',
 #         'PASSWORD': 'mRNSY5',
 #         'HOST': '198.38.82.92',
-#         #'PORT': '3306',
+#         'PORT': '3306',
 #     }
 # }
 #
@@ -93,10 +93,6 @@ DATABASES = {
         'PASSWORD': 'mRNSY5',
         'HOST': '198.38.82.92',
         'PORT': '3306',
-        'OPTIONS': {
-          'autocommit': True,
-          'init_command': 'ALTER DATABASE kodahost_todowoo CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci',
-        },
     }
 }
 
