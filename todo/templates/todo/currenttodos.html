@@ -3,4 +3,7 @@
 {% block content %}
 <h1>Current</h1>
 <h2>Welcome, {{ user.username }}. Please go crazy!</h2>
+{% load static %}
+<img src="{% static 'todo/isla.jpg' %}" alt="isla pic" width="400">
+<img src="{% static 'todo/rob.jpg' %}" alt="rob pic" width="400">
 {% endblock %}
