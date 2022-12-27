@@ -133,7 +133,7 @@ USE_TZ = True
 
 #STATIC_ROOT = BASE_DIR /'static'
 
-STATIC_ROOT = "/home/kodahost/robertlaubscher.com/static/"
+STATIC_ROOT = "/home/kodahost/public_html/robertlaubscher.com/static/"
 
 STATIC_URL = 'static/'
 
