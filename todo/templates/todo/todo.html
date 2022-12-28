@@ -11,7 +11,7 @@
   {% csrf_token %}
   <button type="submit" name="button">Update</button>
 </form>
-{% if todo.datecompleted__isnull%}
+{% if todo.datecompleted__isnull == True %}
 <form method="POST" action="{% url 'completetodo' todo.id %}">
   {% csrf_token %}
   <button type="submit" name="button">Complete</button>
