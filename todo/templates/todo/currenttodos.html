@@ -1,8 +1,7 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-<h1>Current</h1>
-<h2>Welcome, {{ user.username }}. Your todos!</h2>
+<h1>Current Todos</h1>
 <ul>
   {% for todo in todos %}
   <li><a href="{% url 'viewtodo' todo.id %}">
@@ -11,7 +10,5 @@
     </a>
   </li>
   {% endfor %}
-
 </ul>
-<a href="{% url 'createtodo' %}">Create New Todo</a>
 {% endblock %}
