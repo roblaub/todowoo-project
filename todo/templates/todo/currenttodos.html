@@ -1,14 +1,33 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-<h1>Current Todos</h1>
-<ul>
+<h2>Current Todos</h2>
+<div class="list-group">
   {% for todo in todos %}
-  <li><a href="{% url 'viewtodo' todo.id %}">
-    {% if todo.important %}<b>{% endif %}{{todo.title}}{% if todo.important %}</b>{% endif %}
-    {% if todo.memo %} - {{todo.memo}}{% endif %}
-    </a>
-  </li>
+  <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action flex-column align-items-start {% if todo.important %}list-group-item-warning{% endif %}">
+    <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">{{todo.title}} </h5>
+      <small>{% if todo.important %}<span class="badge bg-danger badge-light">Important</span>{% endif %}</small>
+    </div>
+    {% if todo.memo %}
+    <p class="mb-1">{{ todo.memo|truncatewords:10}}</p>
+    {% endif %}
+
+      <div class="row mt-3">
+        <div class="col-4 my-auto">
+          <div class="progress" style="height:15px">
+            <div class="progress-bar {% if todo.progress < 20 %}bg-danger{% elif todo.progress < 70 %}bg-warning text-dark{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ todo.progress }}%;" aria-valuenow="{{ todo.progress }}" aria-valuemin="0" aria-valuemax="100">{{ todo.progress }}%</div>
+          </div>
+        </div>
+      <div class="col-8">
+<div class="float-end">
+  <small>{% if todo.datedue %}{{ todo.datedue }}{% endif%}</small>
+</div>
+
+</div>
+
+  </div>
+  </a>
   {% endfor %}
-</ul>
+</div>
 {% endblock %}
