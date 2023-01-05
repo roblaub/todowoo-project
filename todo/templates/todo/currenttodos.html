@@ -1,32 +1,60 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-<h2>Current Todos</h2>
+{% load static %}
+<div class="d-flex w-100 justify-content-between mb-2">
+  <h2>Current Todos</h2>
+  <a class="nav-link active" aria-current="page" href="{% url 'createtodo' %}">
+    <img class="mt-2 text-success" src="{% static 'todo/add_task.svg'%}" alt="Create task" style="height:75%; color:green;">
+  </a>
+  </div>
+  {% if todos|length is 0 %}
+  <h5>Well done! You finised all your todos. Add one <a href="{% url 'createtodo' %}">here</a></h5>
+  {% endif %}
 <div class="list-group">
   {% for todo in todos %}
   <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action flex-column align-items-start {% if todo.important %}list-group-item-warning{% endif %}">
+<div class="row">
+<div class="col" style="max-width:50px">
+  <form class="form-check p-0 h-100" action="{% url 'completetodo' todo.id %}" method="POST">
+    {% csrf_token %}
+    <button class="btn mycheck" type="submit"></button>
+  </form>
+</div>
+<div class="col">
+  <div class="col">
+
+
     <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1">{{todo.title}} </h5>
       <small>{% if todo.important %}<span class="badge bg-danger badge-light">Important</span>{% endif %}</small>
     </div>
+</div>
     {% if todo.memo %}
-    <p class="mb-1">{{ todo.memo|truncatewords:10}}</p>
+    <p class="mb-1">{{ todo.memo|truncatewords:20}}</p>
     {% endif %}
 
-      <div class="row mt-3">
+      <div class="row mt-2">
+      {% if todo.progress > 0 %}
         <div class="col-4 my-auto">
+
           <div class="progress" style="height:15px">
             <div class="progress-bar {% if todo.progress < 20 %}bg-danger{% elif todo.progress < 70 %}bg-warning text-dark{% else %}bg-success{% endif %}" role="progressbar" style="width: {{ todo.progress }}%;" aria-valuenow="{{ todo.progress }}" aria-valuemin="0" aria-valuemax="100">{{ todo.progress }}%</div>
           </div>
+
         </div>
-      <div class="col-8">
-<div class="float-end">
-  <small>{% if todo.datedue %}{{ todo.datedue }}{% endif%}</small>
+        {% endif %}
+        {% if todo.datedue %}
+      <div class="col">
+<div class="{% if todo.progress > 0 %}float-end{% else %}float-start{% endif %}">
+  <small>{{ todo.datedue|date:"l, j M Y" }}</small>
 </div>
-
 </div>
-
+{% endif%}
   </div>
+  </div>
+
+</div>
   </a>
   {% endfor %}
 </div>

@@ -1,15 +1,32 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-<h1>Completed Todos</h1>
-<ul>
+<h2>Completed Todos</h2>
+<div class="list-group">
+  {% load static %}
   {% for todo in todos %}
-  <li><a href="{% url 'viewtodo' todo.id %}">
-    {% if todo.important %}<b>{% endif %}{{todo.title}}{% if todo.important %}</b>{% endif %}
-    {% if todo.memo %} - {{todo.memo}}{% endif %}
-    </a>
-  </li>
-  {% endfor %}
+  <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action flex-column align-items-start list-group-item-light text-secondary">
+<div class="row">
+<div class="col" style="max-width:50px">
+  <form class="form-check p-0 h-100" action="{% url 'uncompletetodo' todo.id %}" method="POST">
+    {% csrf_token %}
+    <button class="btn mycheck-complete" type="submit"></button>
+  </form>
+</div>
+<div class="col">
+  <div class="col">
 
-</ul>
+
+    <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">{{todo.title}} {% if todo.important %}  <span class="badge text-bg-warning text-light p-1"><small>&#9733;</small></span>{% endif %}</h5>
+      <small><span class=""><strong>Completed:</strong> {{ todo.datecompleted|date:"j M Y"}} at {{todo.datecompleted|time:"G:i a"}}</span></small>
+    </div>
+</div>
+
+  </div>
+
+</div>
+  </a>
+  {% endfor %}
+</div>
 {% endblock %}

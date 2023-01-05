@@ -84,6 +84,16 @@ def completetodo(request, todo_pk):
         pass
 
 @login_required
+def uncompletetodo(request, todo_pk):
+    todo = get_object_or_404(Todo,pk=todo_pk, user=request.user)
+    if request.method == 'POST':
+        todo.datecompleted = None
+        todo.save()
+        return redirect('completedtodos')
+    else:
+        pass
+
+@login_required
 def deletetodo(request, todo_pk):
     todo = get_object_or_404(Todo,pk=todo_pk, user=request.user)
     if request.method == 'POST':
@@ -94,5 +104,5 @@ def deletetodo(request, todo_pk):
 
 @login_required
 def completedtodos(request):
-    todos = Todo.objects.filter(user=request.user,datecompleted__isnull=False)
+    todos = Todo.objects.filter(user=request.user,datecompleted__isnull=False).order_by('-datecompleted')
     return render(request, 'todo/completedtodos.html',{'todos':todos})

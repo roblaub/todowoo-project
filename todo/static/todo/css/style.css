@@ -1,0 +1,51 @@
+.mycheck{
+  background-color: lightgray;
+    -webkit-mask-image: url("../check_circle.svg");
+    mask-image: url("../check_circle.svg");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    width: 30px; /*or your image's width*/
+    height: 30px; /*or your image's height*/
+    margin: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #0000EE;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.mycheck:hover{
+  background-color: green;
+}
+
+.mycheck-complete{
+  background-color: green;
+    -webkit-mask-image: url("../check_circle.svg");
+    mask-image: url("../check_circle.svg");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    width: 30px; /*or your image's width*/
+    height: 30px; /*or your image's height*/
+    margin: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #0000EE;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.mycheck-complete:hover{
+  background-color: blue;
+  -webkit-mask-image: url("../arrow_circle_left.svg");
+  mask-image: url("../arrow_circle_left.svg");
+}

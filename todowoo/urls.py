@@ -31,6 +31,7 @@ urlpatterns = [
     path('todos/<int:todo_pk>',views.viewtodo,name='viewtodo'),
     path('todos/<int:todo_pk>/complete',views.completetodo,name='completetodo'),
     path('todos/<int:todo_pk>/delete',views.deletetodo,name='deletetodo'),
+    path('todos/<int:todo_pk>/uncomplete',views.uncompletetodo,name='uncompletetodo'),
 #api
     path('api/',include('api.urls')),
 
