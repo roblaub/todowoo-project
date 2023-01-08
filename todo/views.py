@@ -47,7 +47,13 @@ def loginuser(request):
 @login_required
 def currenttodos(request):
     todos = Todo.objects.filter(user=request.user,datecompleted__isnull=True)
-    return render(request, 'todo/currenttodos.html',{'todos':todos})
+    total_num = len(Todo.objects.filter(user=request.user))
+    return render(request, 'todo/currenttodos.html',{'todos':todos,'total_num':total_num})
+
+@login_required
+def completedtodos(request):
+    todos = Todo.objects.filter(user=request.user,datecompleted__isnull=False).order_by('-datecompleted')
+    return render(request, 'todo/completedtodos.html',{'todos':todos})
 
 @login_required
 def createtodo(request):
@@ -101,8 +107,3 @@ def deletetodo(request, todo_pk):
         return redirect('currenttodos')
     else:
         pass
-
-@login_required
-def completedtodos(request):
-    todos = Todo.objects.filter(user=request.user,datecompleted__isnull=False).order_by('-datecompleted')
-    return render(request, 'todo/completedtodos.html',{'todos':todos})

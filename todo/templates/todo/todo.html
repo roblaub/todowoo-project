@@ -21,7 +21,7 @@
                     <input type="text" name="title" class="form-control" id="title" value="{{ todo.title }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="memo">Memo</label>
+                    <label for="memo">Notes</label>
                     <textarea name="memo" rows="5" class="form-control" id="memo" >{{ todo.memo}}</textarea>
                 </div>
                 <div class="form-group">
@@ -36,7 +36,7 @@
                   <label for="progress" class="form-label">Progress</label>
                   <input type="range" name="progress" class="form-range" min="0" max="100" step="10" id="progress" value="{{ todo.progress }}">
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Update</button>
                 {% if todo.datecompleted is None %}<button type="button" class="btn btn-success" onclick="$('#complete').click()">Complete</button>
                 {% else %}<button type="button" class="btn btn-warning" onclick="$('#uncomplete').click()">Undo Complete</button>
                 {% endif%}
