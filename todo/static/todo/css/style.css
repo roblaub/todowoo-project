@@ -1,3 +1,13 @@
+svg{
+  fill:blue;
+  transform: scale(0.65);
+}
+
+svg:hover{
+  fill:green;
+  transform: scale(0.75);
+}
+
 .mycheck{
   background-color: lightgray;
     -webkit-mask-image: url("../check_circle.svg");
@@ -7,8 +17,8 @@
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
 
-    width: 30px; /*or your image's width*/
-    height: 30px; /*or your image's height*/
+    width: 25px; /*or your image's width*/
+    height: 25px; /*or your image's height*/
     margin: 0;
     border: none;
     outline: none;
@@ -21,6 +31,7 @@
 
 .mycheck:hover{
   background-color: green;
+  transform: scale(1.2);
 }
 
 .mycheck-complete{
@@ -32,8 +43,8 @@
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
 
-    width: 30px; /*or your image's width*/
-    height: 30px; /*or your image's height*/
+    width: 25px; /*or your image's width*/
+    height: 25px; /*or your image's height*/
     margin: 0;
     border: none;
     outline: none;
@@ -48,4 +59,11 @@
   background-color: blue;
   -webkit-mask-image: url("../arrow_circle_left.svg");
   mask-image: url("../arrow_circle_left.svg");
+  transform: scale(1.2);
+}
+
+@media only screen and (max-width: 600px) {
+  .completed {
+    display: none;
+  }
 }

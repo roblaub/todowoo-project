@@ -18,8 +18,8 @@
 
 
     <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1">{{todo.title}} {% if todo.important %}  <span class="badge text-bg-warning text-light p-1"><small>&#9733;</small></span>{% endif %}</h5>
-      <small><span class=""><strong>Completed:</strong> {{ todo.datecompleted|date:"j M Y"}} at {{todo.datecompleted|time:"G:i a"}}</span></small>
+    <p class="mb-1">{{todo.title}} {% if todo.important %}  <span class="text-warning"><small>&#9733;</small></span>{% endif %}</p>
+      <small><span class="completed"><strong>Completed:</strong> {{ todo.datecompleted|date:"j M Y"}} at {{todo.datecompleted|time:"G:i a"}}</span></small>
     </div>
 </div>
 
