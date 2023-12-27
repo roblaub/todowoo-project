@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, viewsets
 from .serializers import TodoSerializer, TodoCompleteSerializer
 from todo.models import Todo
 from django.utils import timezone
@@ -80,3 +80,7 @@ class TodoComplete(generics.UpdateAPIView):
         else:
             serializer.instance.datecompleted = timezone.now()
             serializer.save()
+
+class TodoView(viewsets.ModelViewSet):
+    serializer_class = TodoSerializer
+    queryset = Todo.objects.all()

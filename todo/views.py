@@ -68,6 +68,7 @@ def createtodo(request):
             return redirect('currenttodos')
         except ValueError:
             return render(request, 'todo/createtodo.html',{'form':TodoForm(), 'error':'Bad data entered, please try again.'})
+
 @login_required
 def viewtodo(request, todo_pk):
     todo = get_object_or_404(Todo,pk=todo_pk, user=request.user)
