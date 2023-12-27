@@ -101,7 +101,7 @@ DATABASES = {
         'NAME': 'kodahost_todowoo',
         'USER': 'kodahost_django',
         'PASSWORD': 'mRNSY5',
-        'HOST': '198.38.82.92',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
